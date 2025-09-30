@@ -31,3 +31,4 @@ int main() {
     printf("%d\n", parenthesisBalance("}}}}test", '{'));
     return 0;
 }
+
