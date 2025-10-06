@@ -38,3 +38,4 @@ echo $?  # Shows count of moved elements / Покажет количество �
 
 - GCC compiler / компилятор GCC
 - Linux/Unix system / Linux/Unix система
+
