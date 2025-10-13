@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int getLuckyTicketsAmount() {
+int getLuckyTicketsAmount(int sumOfNumbers) {
     int ticketsAmount = 1000000;
     int count = 0;
 
@@ -17,13 +17,15 @@ int getLuckyTicketsAmount() {
             currTicket /= 10;
         }
 
-        if (sum1 == sum2)
+        if (sum1 == sumOfNumbers && sum2 == sumOfNumbers)
             count++;
     }
     return count;
 }
 
 int main() {
-    printf("%d", getLuckyTicketsAmount());
+    const int sumOfNumbers = 12;
+    printf("%d", getLuckyTicketsAmount(sumOfNumbers));
     return 0;
 }
+
