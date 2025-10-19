@@ -101,9 +101,9 @@ void freeQueue(OutputQueue *head) {
 }
 
 int getPrecedence(char operation) {
-    if (operation == '/' operation == '*')
+    if (operation == '/' || operation == '*')
         return 1;
-    else if (operation == '-' operation == '+')
+    else if (operation == '-' || operation == '+')
         return 0;
     else
         return -1;
@@ -118,7 +118,7 @@ void shuntingYard(const char *expression) {
     for (int i = 0; expression[i] != '\0'; ++i) {
         char currChar = expression[i];
 
-        Данил, [19.10.2025 20:57] if (isdigit(currChar)) {
+        if (isdigit(currChar)) {
             errorCode = pushToQueue(currChar, &queueHead, &queueTail);
             if (errorCode == -1) {
                 printf("Error: couldn't allocate memory\n");
@@ -126,9 +126,8 @@ void shuntingYard(const char *expression) {
                 freeStack(stackHead);
                 return;
             }
-        }
-        else if (currChar == '+' currChar == '-' currChar == '*' ||
-                 currChar == '/') {
+        } else if (currChar == '+' || currChar == '-' || currChar == '*' ||
+                   currChar == '/') {
             while (stackHead != NULL &&
                    getPrecedence(currChar) <=
                        getPrecedence(stackHead->operation)) {
@@ -154,8 +153,7 @@ void shuntingYard(const char *expression) {
                 freeStack(stackHead);
                 return;
             }
-        }
-        else if (currChar == '(') {
+        } else if (currChar == '(') {
             errorCode = pushToStack(currChar, &stackHead);
             if (errorCode == -1) {
                 printf("Error: couldn't allocate memory\n");
@@ -163,8 +161,7 @@ void shuntingYard(const char *expression) {
                 freeStack(stackHead);
                 return;
             }
-        }
-        else if (currChar == ')') {
+        } else if (currChar == ')') {
             while (stackHead != NULL && stackHead->operation != '(') {
                 char lastStackOp = popFromStack(&stackHead);
                 if (lastStackOp == '\0') {
@@ -187,8 +184,7 @@ void shuntingYard(const char *expression) {
                 freeStack(stackHead);
                 return;
             }
-        }
-        else if (currChar != ' ') {
+        } else if (currChar != ' ') {
             printf("Error: wrong math expression\n");
             freeQueue(queueHead);
             freeStack(stackHead);
