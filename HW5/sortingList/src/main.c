@@ -49,7 +49,7 @@ int main() {
 
             errorCode = removeFromList(value, &head);
             if (errorCode == -1)
-                printf("Element was not found in the list");
+                printf("Element was not found in the list\n");
             else
                 printf("Remove %d from list\n", value);
             break;
