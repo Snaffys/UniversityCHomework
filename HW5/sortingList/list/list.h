@@ -19,7 +19,7 @@ int addToList(int data, SortedList **head);
  * @param head Pointer to pointer of list head
  * @return -1 if couldn't find element, 0 otherwise
  */
-int removeFormList(int data, SortedList **head);
+int removeFromList(int data, SortedList **head);
 
 /**
  * @brief Print list data

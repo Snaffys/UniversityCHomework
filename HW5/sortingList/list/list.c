@@ -24,7 +24,7 @@ int addToList(int data, SortedList **head) {
     return 0;
 }
 
-int removeFormList(int data, SortedList **head) {
+int removeFromList(int data, SortedList **head) {
     if (*head == NULL)
         return -1;
 
@@ -50,7 +50,7 @@ int removeFormList(int data, SortedList **head) {
 
 void printList(SortedList *head) {
     if (head == NULL) {
-        printf("List is empty");
+        printf("List is empty\n");
         return;
     }
 
@@ -63,9 +63,9 @@ void printList(SortedList *head) {
 }
 
 void freeList(SortedList *head) {
-    List *current = head;
+    SortedList *current = head;
     while (current != NULL) {
-        List *next = current->next;
+        SortedList *next = current->next;
         free(current);
         current = next;
     }
