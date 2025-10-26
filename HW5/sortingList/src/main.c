@@ -1,9 +1,16 @@
 #include "../list/list.h"
 #include <stdio.h>
+#include <string.h>
 
 void printMenu();
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc > 1 && strcmp(argv[1], "--test") == 0) {
+        extern void runAllTests();
+        runAllTests();
+        return 0;
+    }
+
     SortedList *head = NULL;
     int errorCode = 0;
     int dialogCode = -1;
@@ -14,7 +21,8 @@ int main() {
 
         if (scanf("%d", &dialogCode) != 1) {
             printf("Wrong input\n");
-            while (getchar() != '\n');
+            while (getchar() != '\n')
+                ;
             continue;
         }
 
@@ -27,7 +35,8 @@ int main() {
 
             if (scanf("%d", &value) != 1) {
                 printf("Error: not an integer!\n");
-                while (getchar() != '\n');
+                while (getchar() != '\n')
+                    ;
                 break;
             }
 
@@ -43,7 +52,8 @@ int main() {
 
             if (scanf("%d", &value) != 1) {
                 printf("Error: not an integer!\n");
-                while (getchar() != '\n');
+                while (getchar() != '\n')
+                    ;
                 break;
             }
 
