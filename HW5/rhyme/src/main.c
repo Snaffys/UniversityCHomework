@@ -27,8 +27,7 @@ int main() {
     m = 3;
     result = rhyme(n, m);
     if (result != -1)
-        printf("Initial position should be: %d\n", result);
-        
+        printf("Initial position should be: %d\n", result); 
         
     return 0;
 }
