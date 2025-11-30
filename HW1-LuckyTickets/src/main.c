@@ -1,32 +1,31 @@
 #include <stdio.h>
 
-int getLuckyTicketsAmount() {
-    const int combinationsPossible = 28;
+int getLuckyTicketsAmount(int sumOfNumbers) {
+    int ticketsAmount = 1000000;
+    int count = 0;
 
-    int sumArr[combinationsPossible] = {0};
+    for (int i = 0; i < ticketsAmount; i++) {
+        int sum1 = 0, sum2 = 0;
+        int currTicket = i;
 
-    for (int s = 0; s < combinationsPossible; ++s) {
-        int count = 0;
-
-        for (int firstNum = 0; firstNum <= 9; ++firstNum) {
-            int remaining = s - firstNum;
-            if (remaining < 0)
-                break;
-            if (remaining <= 18)
-                count += (remaining <= 9) ? (remaining + 1) : (19 - remaining);
+        for (int j = 0; j < 3; j++) {
+            sum1 += currTicket % 10;
+            currTicket /= 10;
+        }
+        for (int j = 0; j < 3; j++) {
+            sum2 += currTicket % 10;
+            currTicket /= 10;
         }
 
-        sumArr[s] = count;
+        if (sum1 == sumOfNumbers && sum2 == sumOfNumbers)
+            count++;
     }
-
-    int totalLucky = 0;
-    for (int i = 0; i < combinationsPossible; ++i)
-        totalLucky += sumArr[i] * sumArr[i];
-
-    return totalLucky;
+    return count;
 }
 
 int main() {
-    printf("%d", getLuckyTicketsAmount());
+    const int sumOfNumbers = 12;
+    printf("%d", getLuckyTicketsAmount(sumOfNumbers));
     return 0;
 }
+
