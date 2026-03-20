@@ -1,9 +1,11 @@
-#define CODE_LENGTH 4
-#define NAME_LENGTH 256
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define CODE_LENGTH 4
+#define NAME_LENGTH 256
 
 typedef struct AVLNode {
     char code[CODE_LENGTH];
