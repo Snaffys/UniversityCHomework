@@ -19,15 +19,16 @@ jobs:
             clang-19 \
             clang-format-19 \
             clang-tidy-19 \
+            cmake \
             build-essential \
             ocl-icd-opencl-dev \
             opencl-headers
       
+      - name: Configure CMake
+        run: cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
       - name: Run full lint
-        run: make format-check && make tidy
+        run: cmake --build build --target lint
 
       - name: Build project
-        run: make
-
-      - name: Run tests
-        run: make test
+        run: cmake --build build --parallel
