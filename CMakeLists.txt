@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(UniversityCHomework)
 
-set(HW_FOLDERS Term2-HW1-CSV Term2-HW4-AVLTree)
+set(HW_FOLDERS Term2-HW1-CSV)
 
 add_custom_target(lint)
 
