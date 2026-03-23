@@ -1,0 +1,34 @@
+name: Build and Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang-19 \
+            clang-format-19 \
+            clang-tidy-19 \
+            cmake \
+            build-essential \
+            ocl-icd-opencl-dev \
+            opencl-headers
+      
+      - name: Configure CMake
+        run: cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+      - name: Run full lint
+        run: cmake --build build --target lint
+
+      - name: Build project
+        run: cmake --build build --parallel
