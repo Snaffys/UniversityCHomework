@@ -1,7 +1,7 @@
 #include "../include/csvConverter.h"
 
-void printRowSeparation(const char* lSymb, const char* mSymb, const char* rSymb, const char* symb,
-    int cols, int colLength, FILE* file)
+void printRowSeparation(
+    const char* lSymb, const char* mSymb, const char* rSymb, const char* symb, int cols, int colLength, FILE* file)
 {
     fprintf(file, "%s", lSymb);
     for (int i = 0; i < cols; ++i) {
