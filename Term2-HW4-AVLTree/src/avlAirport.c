@@ -17,20 +17,11 @@ AVLNode* createAVLNode(const char* code, const char* name)
     return node;
 }
 
-int getAVLHeight(AVLNode* node)
-{
-    return (node == NULL) ? -1 : node->height;
-}
+int getAVLHeight(AVLNode* node) { return (node == NULL) ? -1 : node->height; }
 
-int getMax(int a, int b)
-{
-    return (a > b) ? a : b;
-}
+int getMax(int a, int b) { return (a > b) ? a : b; }
 
-int getAVLBalance(AVLNode* node)
-{
-    return (node == NULL) ? 0 : getAVLHeight(node->left) - getAVLHeight(node->right);
-}
+int getAVLBalance(AVLNode* node) { return (node == NULL) ? 0 : getAVLHeight(node->left) - getAVLHeight(node->right); }
 
 AVLNode* rotateRight(AVLNode* node)
 {
